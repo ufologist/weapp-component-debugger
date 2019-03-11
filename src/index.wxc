@@ -209,8 +209,8 @@ import {
     appendUrl
 } from 'weapp-commons-util';
 
-const DEBUGGER_MATCH_RULES_KEY = 'dj-debugger-match-rules';
-const DEBUGGER_MATCH_RULE_SWITCH_KEY = 'dj-debugger-match-rules-switch';
+const DEBUGGER_MATCH_RULES_KEY = '_dj-debugger-match-rules';
+const DEBUGGER_MATCH_RULE_SWITCH_KEY = '_dj-debugger-match-rules-switch';
 
 export default {
     data: {
@@ -236,9 +236,9 @@ export default {
         pageUrlWithParams: ''
     },
     created: function() {
-        this.backupWxNetwork('request');
-        this.backupWxNetwork('uploadFile');
-        this.backupWxNetwork('downloadFile');
+        this.backupWxApi('request');
+        this.backupWxApi('uploadFile');
+        this.backupWxApi('downloadFile');
     },
     attached: function() {
         this.getAppId();
@@ -372,9 +372,9 @@ export default {
                 this.overwriteWxNetwork('downloadFile');
             } else {
                 // 恢复 wx.request/uploadFile/downloadFile
-                this.restoreWxNetwork('request');
-                this.restoreWxNetwork('uploadFile');
-                this.restoreWxNetwork('downloadFile');
+                this.restoreWxApi('request');
+                this.restoreWxApi('uploadFile');
+                this.restoreWxApi('downloadFile');
             }
 
             this.saveMatchRulesSwitch(matchRulesSwitch);
@@ -492,23 +492,23 @@ export default {
                 }
             });
         },
-        backupWxNetwork: function(apiName) {
+        backupWxApi: function(apiName) {
             var newApiName = '_' + apiName;
             if (!wx[newApiName]) {
-                var wxNetwork = wx[apiName];
+                var wxApi = wx[apiName];
 
                 Object.defineProperty(wx, newApiName, {
-                    value: wxNetwork,
+                    value: wxApi,
                     writable: true,
                     configurable: true
                 });
             }
         },
-        restoreWxNetwork: function(apiName) {
-            var wxNetwork = wx['_' + apiName];
+        restoreWxApi: function(apiName) {
+            var wxApi = wx['_' + apiName];
 
             Object.defineProperty(wx, apiName, {
-                value: wxNetwork,
+                value: wxApi,
                 writable: true,
                 configurable: true
             });
