@@ -1,0 +1,26 @@
+{
+  "name": "weapp-component-debugger",
+  "version": "1.0.0",
+  "description": "\"小老弟\"微信小程序调试助手",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ufologist/weapp-component-debugger.git"
+  },
+  "keywords": [
+    "weapp",
+    "debugger"
+  ],
+  "author": "Sun",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ufologist/weapp-component-debugger/issues"
+  },
+  "homepage": "https://github.com/ufologist/weapp-component-debugger#readme",
+  "dependencies": {
+    "weapp-commons-util": "0.0.4"
+  }
+}
