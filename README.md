@@ -1,11 +1,7 @@
 # weapp-component-debugger
 
-[![NPM version][npm-image]][npm-url] [![Build Status][ci-status-image]][ci-status-url] [![Coverage Status][coverage-status-image]][coverage-status-url] [![changelog][changelog-image]][changelog-url] [![license][license-image]][license-url]
+[![NPM version][npm-image]][npm-url] [![changelog][changelog-image]][changelog-url] [![license][license-image]][license-url]
 
-[ci-status-image]: https://travis-ci.org/ufologist/weapp-component-debugger.svg?branch=master
-[ci-status-url]: https://travis-ci.org/ufologist/weapp-component-debugger
-[coverage-status-image]: https://coveralls.io/repos/github/ufologist/weapp-component-debugger/badge.svg?branch=master
-[coverage-status-url]: https://coveralls.io/github/ufologist/weapp-component-debugger
 [npm-image]: https://img.shields.io/npm/v/weapp-component-debugger.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/weapp-component-debugger
 [license-image]: https://img.shields.io/github/license/ufologist/weapp-component-debugger.svg
@@ -13,7 +9,7 @@
 [changelog-image]: https://img.shields.io/badge/CHANGE-LOG-blue.svg?style=flat-square
 [changelog-url]: https://github.com/ufologist/weapp-component-debugger/blob/master/CHANGELOG.md
 
-"小老弟"微信小程序调试助手
+"小老弟"微信小程序调试助手(自定义组件), 简称: 小D(ebugger)
 
 ![weapp-component-debugger](https://user-images.githubusercontent.com/167221/54182603-ed863400-44dc-11e9-8ae8-4faeab3b8ac9.png)
 
@@ -46,7 +42,7 @@
   npm install weapp-component-debugger --save
   ```
 
-* 引用组件
+* 引用组件(在页面中引用自定义组件)
 
   ```json
   "usingComponents": {
@@ -54,7 +50,7 @@
   }
   ```
 
-* 使用组件
+* 使用组件(在页面中使用自定义组件)
 
   ```html
   <weapp-component-debugger></weapp-component-debugger>
