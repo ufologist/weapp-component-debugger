@@ -1,5 +1,8 @@
 <template>
 <view class="debugger">
+    <view class="weui-article">
+        <view class="weui-article__h1">"小老弟"微信小程序调试助手</view>
+    </view>
     <view class="weui-panel weui-panel_access">
         <view class="weui-panel__hd">页面信息</view>
         <view class="weui-panel__bd">
@@ -200,12 +203,15 @@
             </view>
         </view>
     </view>
+
+    <view class="weui-footer">
+        <view class="weui-footer__text">v1.0.0 https://github.com/ufologist/weapp-component-debugger</view>
+    </view>
 </view>
 </template>
 <script>
 import {
     navigateTo,
-    reloadCurrentPage,
     appendUrl
 } from 'weapp-commons-util';
 
@@ -248,23 +254,16 @@ export default {
         this.initMatchRulesSwitch();
         this.changeMatchRules(this.data.matchRulesSwitch);
     },
-
-    // onShow: function() {
-    //     this.getAppId();
-    //     this.initDeviceInfo();
-    //     this.initPageInfo();
-    //     this.initMatchRules();
-    //     this.initMatchRulesSwitch();
-    //     this.changeMatchRules(this.data.matchRulesSwitch);
-    // },
     // lifetimes: {
     //     error: function() {
 
     //     }
     // },
-    // onPullDownRefresh: function() {
-    //     reloadCurrentPage();
-    // },
+    pageLifetimes: {
+        show: function() {
+            this.attached();
+        }
+    },
     // onShareAppMessage: function() {
     //     return {
     //         title: this.data.shareTitle ? this.data.shareTitle : '',
