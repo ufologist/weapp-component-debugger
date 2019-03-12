@@ -1,8 +1,6 @@
 <template>
 <view class="debugger">
-    <view class="weui-article">
-        <view class="weui-article__h1">"小老弟"微信小程序调试助手</view>
-    </view>
+    <view class="weui-article__h1 weui-article__h1--debugger">微信小程序调试助手</view>
     <view class="weui-panel weui-panel_access">
         <view class="weui-panel__hd">页面信息</view>
         <view class="weui-panel__bd">
@@ -205,7 +203,7 @@
     </view>
 
     <view class="weui-footer">
-        <view class="weui-footer__text">v1.0.0 https://github.com/ufologist/weapp-component-debugger</view>
+        <view class="weui-footer__text">v1.0.0 github.com/ufologist/weapp-component-debugger</view>
     </view>
 </view>
 </template>
@@ -2062,6 +2060,13 @@ icon {
 //     background-color: #f1f1f1;
 //     font-family: -apple-system-font,Helvetica Neue,Helvetica,sans-serif;
 // }
+.debugger {
+    background-color: #f1f1f1;
+    font-family: -apple-system-font,Helvetica Neue,Helvetica,sans-serif;
+}
+.weui-article__h1--debugger {
+    text-align: center;
+}
 .weui-cell__bd--param {
     position: relative;
     align-items: center;
