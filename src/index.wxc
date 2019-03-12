@@ -79,7 +79,7 @@
         </view>
         <view class="weui-panel__ft">
             <view class="weui-btn-area">
-                <button type="primary" open-type="share" disabled="{{!pageUrl}}">分享</button>
+                <button type="primary" open-type="share" bindtap="triggerShare" disabled="{{!pageUrl}}">分享(点击两次生效)</button>
             </view>
         </view>
 
@@ -218,8 +218,6 @@ const DEBUGGER_MATCH_RULE_SWITCH_KEY = '_debugger-match-rules-switch';
 
 export default {
     data: {
-        expand: false,
-
         appId: '',
         pageInfo: '',
         pageInfoUrl: '',
@@ -245,36 +243,21 @@ export default {
         this.backupWxApi('downloadFile');
     },
     attached: function() {
-        this.getAppId();
-        this.initDeviceInfo();
-        this.initPageInfo();
-        this.initMatchRules();
-        this.initMatchRulesSwitch();
-        this.changeMatchRules(this.data.matchRulesSwitch);
+        this.init();
     },
-    // lifetimes: {
-    //     error: function() {
-
-    //     }
-    // },
     pageLifetimes: {
         show: function() {
-            this.attached();
+            this.init();
         }
     },
-    // onShareAppMessage: function() {
-    //     return {
-    //         title: this.data.shareTitle ? this.data.shareTitle : '',
-    //         path: this.data.pageUrl ? this.data.pageUrl : '',
-    //         imageUrl: this.data.shareImageUrl ? this.data.shareImageUrl : ''
-    //     };
-    // },
-
     methods: {
-        expandPanel: function() {
-            this.setData({
-                expand: !this.data.expand
-            });
+        init: function() {
+            this.getAppId();
+            this.initDeviceInfo();
+            this.initPageInfo();
+            this.initMatchRules();
+            this.initMatchRulesSwitch();
+            this.changeMatchRules(this.data.matchRulesSwitch);
         },
 
         copy: function(event) {
@@ -814,6 +797,16 @@ export default {
         changeShareImageUrl: function(event) {
             this.setData({
                 shareImageUrl: event.detail.value
+            });
+        },
+        triggerShare: function() {
+            // 由于无法通过 API 来触发分享功能, 只能通知页面修改分享的数据
+            // 因此会先唤起分享, 再实际修改分享的数据
+            // 想要分享的内容生效, 需要点击两次分享
+            this.triggerEvent('share', {
+                title: this.data.shareTitle ? this.data.shareTitle : '',
+                path: this.data.pageUrl ? this.data.pageUrl : '',
+                imageUrl: this.data.shareImageUrl ? this.data.shareImageUrl : ''
             });
         }
     }
