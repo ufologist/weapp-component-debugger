@@ -213,8 +213,8 @@ import {
     appendUrl
 } from 'weapp-commons-util';
 
-const DEBUGGER_MATCH_RULES_KEY = '_dj-debugger-match-rules';
-const DEBUGGER_MATCH_RULE_SWITCH_KEY = '_dj-debugger-match-rules-switch';
+const DEBUGGER_MATCH_RULES_KEY = '_debugger-match-rules';
+const DEBUGGER_MATCH_RULE_SWITCH_KEY = '_debugger-match-rules-switch';
 
 export default {
     data: {
