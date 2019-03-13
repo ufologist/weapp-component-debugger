@@ -36,6 +36,8 @@
 
 ## 使用方法
 
+PS: 目前适用于 [Min](https://github.com/meili/min-cli) 来构建的小程序项目接入, 对于原生小程序项目或者其他构建方式, 请手工 copy 代码 :(
+
 * 安装组件
 
   ```
@@ -55,6 +57,44 @@
   ```html
   <weapp-component-debugger></weapp-component-debugger>
   ```
+
+## 示例
+
+```
+<template>
+<weapp-component-debugger bindshare="setShareContent"></weapp-component-debugger>
+</template>
+
+<script>
+import {
+    reloadCurrentPage
+} from 'weapp-commons-util';
+
+export default {
+    config: {
+        enablePullDownRefresh: true,
+        usingComponents: {
+            'weapp-component-debugger': 'weapp-component-debugger',
+        }
+    },
+    data: {
+        shareContent: {}
+    },
+    onPullDownRefresh: function() {
+        reloadCurrentPage();
+    },
+    setShareContent: function(event) {
+        this.setData({
+            shareContent: event.detail
+        });
+    },
+    onShareAppMessage: function() {
+        return this.data.shareContent;
+    }
+};
+</script>
+<style lang="less"></style>
+```
 
 ## 初心
 
